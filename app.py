@@ -5,7 +5,7 @@ from ultralytics import YOLO
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-model = YOLO("model/food_detector_small.pt") 
+model = YOLO("model/food_detector_small.pt")
 
 menu = {
     'banana': 5,
@@ -78,4 +78,4 @@ def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
